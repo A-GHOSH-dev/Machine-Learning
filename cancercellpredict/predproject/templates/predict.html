@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <main class="m-5">
+    <h1>Predict Cancer - Predict</h1>
+
+    {% load static %}
+    <form action="result">
+      {% csrf_token %} 
+              <div class="mb-3">
+          <label for="one" class="form-label">WBC_area</label>
+          <input type="text" class="form-control" id="WBC_area" name="WBC_area">
+         </div>
+
+         <div class="mb-3">
+            <label for="one" class="form-label">WBC_convex_area</label>
+            <input type="text" class="form-control" id="WBC_convex_area" name="WBC_convex_area">
+           </div>
+
+           <div class="mb-3">
+            <label for="one" class="form-label">WBC_peri</label>
+            <input type="text" class="form-control" id="WBC_peri" name="WBC_peri">
+           </div>
+
+           <div class="mb-3">
+            <label for="one" class="form-label">ecc_wbc</label>
+            <input type="text" class="form-control" id="ecc_wbc" name="ecc_wbc">
+           </div>
+
+           <div class="mb-3">
+            <label for="one" class="form-label">solidity_wbc</label>
+            <input type="text" class="form-control" id="solidity_wbc" name="solidity_wbc">
+           </div>
+
+           <div class="mb-3">
+            <label for="one" class="form-label">orient_wbc</label>
+            <input type="text" class="form-control" id="orient_wbc" name="orient_wbc">
+           </div>
+
+           <div class="mb-3">
+            <label for="one" class="form-label">nuc_area</label>
+            <input type="text" class="form-control" id="nuc_area" name="nuc_area">
+           </div>
+
+           <div class="mb-3">
+            <label for="one" class="form-label">nuc_ratio</label>
+            <input type="text" class="form-control" id="nuc_ratio" name="nuc_ratio">
+           </div>
+
+           <div class="mb-3">
+            <label for="one" class="form-label">peri_nuc</label>
+            <input type="text" class="form-control" id="peri_nuc" name="peri_nuc">
+           </div>
+
+           <div class="mb-3">
+            <label for="one" class="form-label">round_nuc</label>
+            <input type="text" class="form-control" id="round_nuc" name="round_nuc">
+           </div>
+
+           <div class="mb-3">
+            <label for="one" class="form-label">ecc_nuc</label>
+            <input type="text" class="form-control" id="ecc_nuc" name="ecc_nuc">
+           </div> 
+           
+           <div class="mb-3">
+            <label for="one" class="form-label">solidity_nuc</label>
+            <input type="text" class="form-control" id="solidity_nuc" name="solidity_nuc">
+           </div>
+
+           <div class="mb-3">
+            <label for="one" class="form-label">convex_area_nuc</label>
+            <input type="text" class="form-control" id="convex_area_nuc" name="convex_area_nuc">
+           </div>
+
+           <div class="mb-3">
+            <label for="one" class="form-label">avg_cyt_re</label>
+            <input type="text" class="form-control" id="avg_cyt_re" name="avg_cyt_re">
+           </div>
+
+           <div class="mb-3">
+            <label for="one" class="form-label">avg_cyt_gr</label>
+            <input type="text" class="form-control" id="avg_cyt_gr" name="avg_cyt_gr">
+           </div>
+
+           <div class="mb-3">
+            <label for="one" class="form-label">avg_cyt_bl</label>
+            <input type="text" class="form-control" id="avg_cyt_bl" name="avg_cyt_bl">
+           </div>
+
+           <div class="mb-3">
+            <label for="one" class="form-label">entropy_cyt</label>
+            <input type="text" class="form-control" id="entropy_cyt" name="entropy_cyt">
+           </div>
+
+           <div class="mb-3">
+            <label for="one" class="form-label">minoraxis</label>
+            <input type="text" class="form-control" id="minoraxis" name="minoraxis">
+           </div>
+
+           <div class="mb-3">
+            <label for="one" class="form-label">majoraxis</label>
+            <input type="text" class="form-control" id="majoraxis" name="majoraxis">
+           </div>
+
+           <div class="mb-3">
+            <label for="one" class="form-label">minoraxis_nuc</label>
+            <input type="text" class="form-control" id="minoraxis_nuc" name="minoraxis_nuc">
+           </div>
+
+           <div class="mb-3">
+            <label for="one" class="form-label">majoraxis_nuc</label>
+            <input type="text" class="form-control" id="majoraxis_nuc" name="majoraxis_nuc">
+           </div>
+
+           <div class="mb-3">
+            <label for="one" class="form-label">axismeanratio</label>
+            <input type="text" class="form-control" id="axismeanratio" name="axismeanratio">
+           </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+Result: {{result2}}
+<div>
+  <h5>ROC:</h5>
+  <img src="{% static 'rocplot.jpg' %}">
+</div>
+
+
+
+</main>
+
+
+
+
+
+  
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
